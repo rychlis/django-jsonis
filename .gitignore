@@ -1,0 +1,22 @@
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+
+# Editor temp files:
+*.swp
+*~
+
+# SQLite3 database files:
+*.db
+
+# Celerybeat scheduler file:
+celerybeat-schedule
+
+*.pot
+.idea
+venv
+
+# Mac OS crap
+.DS_Store
