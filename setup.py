@@ -4,15 +4,15 @@ from distutils.core import setup
 
 setup(
     name='django-jsonis',
-    version='0.1.0',
+    version='0.1.1',
     description='Django JSON Utils',
     author='Tomas Rychlik',
     author_email='rychlis@rychlis.cz',
-    packages=['jsonis'],
+    packages=['jsonis', 'jsonis.templatetags'],
     license='MIT',
-    install_requires=[
-        'Django==1.6.3',
-        'PyJWT==0.1.6'
+    requires=[
+        'Django(>=1.4.0,<1.7)',
+        'PyJWT(>=0.1.6,<0.2)'
     ],
     classifiers=[
         'Intended Audience :: Developers',
