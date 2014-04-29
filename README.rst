@@ -2,6 +2,7 @@ django-jsonis
 =============
 
 Helper library that can be used in combination with Django Class-Based views to return JSON responses.
+Warning: this is a work in progress, pending code refactoring and documentation
 
 Features
 --------
