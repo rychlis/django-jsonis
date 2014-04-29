@@ -3,8 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.generic.edit import BaseFormView
 
-from .utils import MyJSONEncoder, MyJSONDecoder
-from libs.lazy import lazyprop
+from .utils import MyJSONEncoder, MyJSONDecoder, lazyprop
 
 class CharsetHttpResponse(HttpResponse):
     """HttpResponse that will append charset info into Content-Type header"""
