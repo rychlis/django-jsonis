@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='django-jsonis',
-    version='0.1.4',
+    version='0.1.5',
     description='Django JSON Utils',
     author='Tomas Rychlik',
     author_email='rychlis@rychlis.cz',
