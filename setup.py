@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='django-jsonis',
-    version='0.1.5',
+    version='0.1.6',
     description='Django JSON Utils',
     author='Tomas Rychlik',
     author_email='rychlis@rychlis.cz',
-    packages=['jsonis', 'jsonis.templatetags'],
+    packages=['jsonis', 'jsonis.templatetags', 'jsonis.jwt'],
     license='MIT',
     url='https://github.com/rychlis/django-jsonis',
     install_requires=[
