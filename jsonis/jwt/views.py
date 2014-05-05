@@ -19,8 +19,11 @@ class JWTAuthorizationMixin(JSONApiResponseMixin):
             try:
                 auth_prefix, auth_token = request.META['HTTP_AUTHORIZATION'].split(' ')
                 if auth_prefix != 'Bearer':
-                    return self.render_api_error_response('Not authenticated - Bad authorization header', status=401)
+                    return self.render_api_error_response('Not authenticated - Bad authorization header prefix',
+                                                          status=401)
                 token_data = parse_token(auth_token)
+            except ValueError:
+                return self.render_api_error_response('Not authenticated - Bad authorization header format', status=401)
             except KeyError:
                 return self.render_api_error_response('Not authenticated - Missing authorization header', status=401)
             except JWTParseError as e:
