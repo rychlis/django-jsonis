@@ -12,6 +12,9 @@ class JWTAuthMiddleware(object):
     # Required header prefix
     required_auth_prefix = 'Bearer'
 
+    # Login user after successful authentication
+    login_user = False
+
     def process_request(self, request):
         if not hasattr(request, 'user'):
             raise ImproperlyConfigured(
@@ -24,10 +27,11 @@ class JWTAuthMiddleware(object):
             if auth_prefix != self.required_auth_prefix:
                 raise ValueError
 
-            user = authenticate(authorization_token=auth_token)
+            user = authenticate(authentication_token=auth_token)
             if user:
                 request.user = user
-                login(request, user)
+                if self.login_user:
+                    login(request, user)
 
         except KeyError:
             # There is no self.header
