@@ -23,7 +23,7 @@ class JSONResponse(CharsetHttpResponse):
         self.content_data = content_data
         kwargs.setdefault('content_type', 'application/json')
 
-        super(JSONResponse, self).__init__(encoder.iterencode(self.content_data), *args, **kwargs)
+        super(JSONResponse, self).__init__(encoder.encode(self.content_data), *args, **kwargs)
 
 class JSONResponseMixin(object):
     """Mixin providing render_json_response returning the JSONResponse"""
