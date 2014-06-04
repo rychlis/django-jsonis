@@ -10,6 +10,7 @@ class JWTAuthorizationMixin(JSONApiResponseMixin):
     """JSON API mixin that enables JSON Web Token authorization
 
     FIXME: Deprecated, move to middleware & auth backend"""
+    jwt_token_data = None
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -21,7 +22,7 @@ class JWTAuthorizationMixin(JSONApiResponseMixin):
                 if auth_prefix != 'Bearer':
                     return self.render_api_error_response('Not authenticated - Bad authorization header prefix',
                                                           status=401)
-                token_data = parse_token(auth_token)
+                self.jwt_token_data = parse_token(auth_token)
             except ValueError:
                 return self.render_api_error_response('Not authenticated - Bad authorization header format', status=401)
             except KeyError:
@@ -30,7 +31,7 @@ class JWTAuthorizationMixin(JSONApiResponseMixin):
                 return self.render_api_error_response('Not authenticated - %s' % e, status=401)
 
             try:
-                self.user = get_user_model().objects.get(pk=token_data['id'])
+                self.user = get_user_model().objects.get(pk=self.jwt_token_data['id'])
             except (TypeError, KeyError):
                 return self.render_api_error_response('Not authenticated - Bad authorization header data', status=401)
             except get_user_model().DoesNotExist:
