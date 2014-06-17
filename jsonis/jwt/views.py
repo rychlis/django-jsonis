@@ -38,7 +38,7 @@ class JWTAuthorizationMixin(JSONApiResponseMixin):
     def _check_token_data(self, jwt_token_data):
         """Parsed token data checks. Returns a Response if there is an error, None otherwise"""
         try:
-            self.user = get_user_model().objects.get(pk=self.jwt_token_data['id'])
+            self.user = get_user_model().objects.get(pk=jwt_token_data['id'])
         except (TypeError, KeyError):
             return self.render_api_error_response('Not authenticated - Bad authorization header data', status=401)
         except get_user_model().DoesNotExist:
