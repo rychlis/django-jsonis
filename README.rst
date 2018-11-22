@@ -5,6 +5,8 @@ Helper library that can be used in combination with Django Class-Based views to 
 
 **Warning**: this is a work in progress, pending code refactoring and documentation
 
+**Warning 2**: Rather consider using [Django REST Framework](https://www.django-rest-framework.org/)
+
 Features
 --------
 - JSONApiResponseMixin providing render_api_response and render_api_error_response methods
